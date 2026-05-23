@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #050810;
+  --azure: #5b8cff;
+  --gold: #e3b24f;
+  --cyan: #3fd1c7;
+  --rose: #ff6f91;
+  --aura: #9b8cff;
+  --ink: #f4f7ff;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+  color: var(--ink);
+}
+
+body {
+  background-color: #050810;
+  background-image:
+    radial-gradient(ellipse 1100px 620px at 8% -6%, rgba(91, 140, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 940px 560px at 94% 2%, rgba(63, 209, 199, 0.08), transparent 62%),
+    radial-gradient(ellipse 1040px 680px at 50% 122%, rgba(155, 140, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 760px 760px at 74% 60%, rgba(227, 178, 79, 0.05), transparent 60%);
+  font-family: "Newsreader", ui-serif, Georgia, serif;
+  letter-spacing: 0.004em;
+}
+
+::selection { background: rgba(91, 140, 255, 0.40); color: #f4f7ff; }
+
+.display { font-family: "Sora", ui-sans-serif, system-ui, sans-serif; font-weight: 600; letter-spacing: -0.012em; }
+.zh { font-family: "Noto Serif SC", serif; }
+.label-mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.26em; text-transform: uppercase; font-size: 0.64rem; color: var(--azure);
+}
+
+/* luminous equality gradient — azure → cyan → silver → gold */
+.equality-text {
+  background: linear-gradient(100deg, #8aadff 0%, #5b8cff 28%, #3fd1c7 56%, #c2cce4 78%, #e3b24f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.glow-azure { text-shadow: 0 0 26px rgba(91,140,255,0.55), 0 0 70px rgba(91,140,255,0.24); }
+.glow-gold  { text-shadow: 0 0 26px rgba(227,178,79,0.5),  0 0 70px rgba(227,178,79,0.2); }
+.glow-cyan  { text-shadow: 0 0 26px rgba(63,209,199,0.5),  0 0 70px rgba(63,209,199,0.2); }
+.glow-rose  { text-shadow: 0 0 26px rgba(255,111,145,0.5), 0 0 70px rgba(255,111,145,0.2); }
+.glow-aura  { text-shadow: 0 0 30px rgba(155,140,255,0.6), 0 0 80px rgba(155,140,255,0.28); }
+
+/* frosted institutional panel */
+.panel {
+  background: linear-gradient(160deg, rgba(20, 33, 64, 0.55), rgba(8, 12, 24, 0.9));
+  border: 1px solid rgba(180, 192, 219, 0.11);
+  backdrop-filter: blur(9px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.panel:hover { border-color: rgba(91, 140, 255, 0.42); box-shadow: 0 0 42px -16px rgba(91,140,255,0.7); }
+
+/* charter / constitutional panel — faint gilt edge */
+.relic {
+  background: linear-gradient(165deg, rgba(16, 26, 52, 0.66), rgba(6, 9, 18, 0.92));
+  border: 1px solid rgba(227, 178, 79, 0.14);
+  box-shadow: inset 0 1px 0 rgba(227,178,79,0.06), 0 24px 64px -30px rgba(0,0,0,0.92);
+}
+
+/* the balance rule — a level line */
+.rule-eq {
+  background: linear-gradient(90deg, transparent, rgba(91,140,255,0.6) 18%, rgba(63,209,199,0.55) 50%, rgba(227,178,79,0.5) 82%, transparent);
+}
+
+/* drifting glow node */
+@keyframes drift {
+  0% { transform: translateY(0) scale(0.9); opacity: 0; }
+  18% { opacity: 0.85; }
+  100% { transform: translateY(-260px) scale(1.25); opacity: 0; }
+}
+.drift { animation: drift linear infinite; }
+
+/* flowing dashed link */
+@keyframes flow { to { stroke-dashoffset: -48; } }
+.flow { stroke-dasharray: 5 8; animation: flow 1.7s linear infinite; }
+
+/* pulse */
+@keyframes pulseGlow { 0%,100% { opacity: 0.45; } 50% { opacity: 1; } }
+.pulse { animation: pulseGlow 2.6s ease-in-out infinite; }
+
+/* slow spin for orbit glyphs */
+@keyframes spin360 { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin360 48s linear infinite; transform-origin: center; }
+.spin-rev { animation: spin360 70s linear infinite reverse; transform-origin: center; }
+
+@keyframes riseIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.rise-in { animation: riseIn 0.9s cubic-bezier(0.2,0.7,0.2,1) both; }
+.lang-fade { animation: riseIn 0.45s ease both; }
+
+/* a gently re-leveling balance beam */
+@keyframes tip { 0%,100% { transform: rotate(-3.4deg); } 50% { transform: rotate(3.4deg); } }
+.tip { animation: tip 7s ease-in-out infinite; transform-origin: center; }
+
+/* breathing aura for the emblem */
+@keyframes breathe { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.04); } }
+.breathe { animation: breathe 6s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 10px; background: #050810; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #121d38, #1a2950); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #1a2950, #5b8cff); }
